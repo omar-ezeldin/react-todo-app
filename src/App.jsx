@@ -1,9 +1,16 @@
 import './App.css'
+import { Header } from './components/Header'
+import { ThemeProvider, useThemeUpdate } from './context/themeContext'
+
 
 function App() {
-  return (
+  // const toggleTheme = useThemeUpdate()
+
+    return (
     <>
-      <h1>This will be a todo app</h1>
+      <ThemeProvider>
+        <Header />
+      </ThemeProvider>
     </>
   )
 }
