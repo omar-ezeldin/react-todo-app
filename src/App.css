@@ -9,6 +9,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Rubik', Arial, Helvetica, sans-serif;
+  /* overflow: hidden; */
 }
 
 .noSelect {
@@ -36,14 +37,14 @@ nav {
 }
 
 .nav-title {
-  font-size: 2.3rem;
+  font-size: 3.2rem;
   text-transform: uppercase;
   text-align: center;
   font-family: 500;
 }
 
 .nav-sub-title {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-align: center;
   font-weight: 300;
   font-style: italic;
@@ -120,7 +121,75 @@ nav.dark {
   height: 100%;
 }
 
-@media screen and (max-width: 700px) {
+/* Task Section */
+
+.task-section {
+  height: 88vh;
+  width: 26vw;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.task-section.light {
+  background-color: var(--white);
+  border-right: 0.20rem solid var(--black);
+}
+
+.task-section.dark {
+  background-color: var(--black);
+  border-right: 0.20rem solid var(--white);
+}
+
+.task-section-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 2rem 1.5rem 1rem;
+}
+
+.task-section-title.light {color: var(--black);}
+.task-section-title.dark {color: var(--white);}
+
+/* Task */
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.task-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.task-checkbox {
+  border-radius: 0.70rem;
+  width: 10%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.task-title.completed {text-decoration: line-through;}
+
+.task.light {color: var(--black);}
+.task.dark {color: var(--white);}
+.task-checkbox.light {border: 0.125rem solid var(--black);}
+.task-checkbox.dark {border: 0.125rem solid var(--white);}
+
+.checkmark {height: 90%; display: none;}
+.checkmark.completed {display: block;}
+.checkmark.light {fill: var(--black);}
+.checkmark.dark {fill: var(--white);}
+
+
+
+
+@media screen and (max-width: 800px) {
 
   nav {
     height: 11vh;

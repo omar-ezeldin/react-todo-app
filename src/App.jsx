@@ -1,5 +1,7 @@
 import './App.css'
 import { Header } from './components/Header'
+import { TaskSection } from './components/TaskSection'
+import { TasksProvider } from './context/taskContext'
 import { ThemeProvider, useThemeUpdate } from './context/themeContext'
 
 
@@ -8,9 +10,12 @@ function App() {
 
     return (
     <>
-      <ThemeProvider>
-        <Header />
-      </ThemeProvider>
+      <TasksProvider>
+        <ThemeProvider>
+          <Header />
+          <TaskSection />
+        </ThemeProvider>
+      </TasksProvider>
     </>
   )
 }
