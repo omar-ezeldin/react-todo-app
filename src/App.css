@@ -114,11 +114,13 @@ nav.dark {
 .sun {
   fill: var(--black);
   height: 100%;
+  max-height: 4vh;
 }
 
 .moon {
   fill: var(--white);
   height: 100%;
+  max-height: 4vh;
 }
 
 /* Task Section */
@@ -212,5 +214,9 @@ nav.dark {
     height: 50%;
     aspect-ratio: 1/1;
     align-items: center;
+  }
+
+  .task-section {
+    width: 100%
   }
 }
