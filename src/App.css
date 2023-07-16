@@ -103,3 +103,45 @@ nav.dark {
 .mode-inner-circle.dark {background-color: var(--black); margin-left: auto;}
 
 .mode-text.inactive {opacity: 0.7;}
+
+/* Mobile Toggle */
+
+.mobile-toggle {
+  display: none;
+}
+
+.sun {
+  fill: var(--black);
+  height: 100%;
+}
+
+.moon {
+  fill: var(--white);
+  height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+
+  nav {
+    height: 11vh;
+  }
+
+  .nav-sub-title {
+    display: none;
+  }
+
+  .nav-title {
+    font-size: 1.8rem;
+  }
+
+  .mode-toggle {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex; 
+    height: 50%;
+    aspect-ratio: 1/1;
+    align-items: center;
+  }
+}
