@@ -9,8 +9,8 @@ export function TaskSection() {
     let taskElements = tasks.map(task => <Task title={task.title} isCompleted={task.isCompleted} />)
 
     return (
-        <div className={darkTheme ? "task-section dark" : "task-section light"}>
-            <h2 className={darkTheme ? "task-section-title dark" : "task-section-title light"}>Tasks</h2>
+        <div className={`task-section ${darkTheme ? "dark" : "light"}`}>
+            <h2 className={`task-section-title ${darkTheme ? "dark" : "light"}`}>Tasks</h2>
             {taskElements}
         </div>
     )

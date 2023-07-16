@@ -10,11 +10,11 @@ export function ModeToggle() {
     return (
         <>
             <div className="mode-toggle noSelect">
-                <h4 className={darkTheme ? "mode-text inactive" : "mode-text"}>Light</h4>
-                <div className={darkTheme ? "mode-outer-section dark" : "mode-outer-section light"} onClick={toggleTheme}>
-                    <div className={darkTheme ? "mode-inner-circle dark" : "mode-inner-circle light"}></div>
+                <h4 className={`mode-text ${darkTheme && "inactive"}`}>Light</h4>
+                <div className={`mode-outer-section ${darkTheme ? "dark" : "light"}`} onClick={toggleTheme}>
+                <div className={`mode-inner-circle ${darkTheme ? "dark" : "light"}`}></div>
                 </div>
-                <h4 className={darkTheme ? "mode-text" : "mode-text inactive"}>Dark</h4>
+                <h4 className={`mode-text ${!darkTheme && "inactive"}`}>Dark</h4>
             </div>
 
             <div className="mobile-toggle" onClick={toggleTheme}>
