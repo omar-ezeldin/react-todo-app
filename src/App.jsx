@@ -1,19 +1,21 @@
 import './App.css'
+import { EditingSection } from './components/EditingSection'
 import { Header } from './components/Header'
 import { TaskSection } from './components/TaskSection'
 import { TasksProvider } from './context/taskContext'
-import { ThemeProvider, useThemeUpdate } from './context/themeContext'
+import { ThemeProvider } from './context/themeContext'
 
 
 function App() {
-  // const toggleTheme = useThemeUpdate()
-
     return (
     <>
       <TasksProvider>
         <ThemeProvider>
           <Header />
-          <TaskSection />
+            <div className="container">
+              <TaskSection />
+              <EditingSection />
+            </div>
         </ThemeProvider>
       </TasksProvider>
     </>

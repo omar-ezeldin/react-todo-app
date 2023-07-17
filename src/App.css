@@ -9,7 +9,11 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Rubik', Arial, Helvetica, sans-serif;
-  /* overflow: hidden; */
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
 }
 
 .noSelect {
@@ -125,13 +129,32 @@ nav.dark {
 
 /* Task Section */
 
+.task-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1.5rem;
+}
+
+.task-section-header > .plus {
+  height: 6vh;
+  cursor: pointer;
+}
+
+.task-section-header > .plus.light {fill: var(--black);}
+.task-section-header > .plus.dark {fill: var(--white);}
+
 .task-section {
   height: 88vh;
   width: 26vw;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+.task-section::-webkit-scrollbar {display: none;}
 
 .task-section.light {
   background-color: var(--white);
@@ -146,7 +169,7 @@ nav.dark {
 .task-section-title {
   font-size: 3rem;
   font-weight: 300;
-  margin: 2rem 1.5rem 1rem;
+  margin: 2rem 0;
 }
 
 .task-section-title.light {color: var(--black);}
@@ -188,8 +211,144 @@ nav.dark {
 .checkmark.light {fill: var(--black);}
 .checkmark.dark {fill: var(--white);}
 
+/* Editing section */
+
+.editing-section {
+  background-color: var(--white);
+  color: var(--black);
+  width: 74vw;
+  height: 88vh;
+}
+
+.editing-section.light {background-color: var(--white); color: var(--black);}
+.editing-section.dark {background-color: var(--black); color: var(--white);}
+
+.editing-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 3.5rem 1rem;
+}
+
+.editing-section-header.light{border-bottom: 0.20rem solid var(--black);}
+.editing-section-header.dark{border-bottom: 0.20rem solid var(--white);}
+
+.editing-section-title {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+.trash {
+  height: 6vh;
+  cursor: pointer;
+}
+
+.trash.light {fill: var(--black)}
+.trash.dark {fill: var(--white)}
+
+.editing-section-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group > label {
+  font-size: 1.75rem;
+}
+
+.input-group {
+  margin: 1rem 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.input-group.title > input {
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.70rem;
+  font-size: 1.70rem;
+  font-family: 'Rubik', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  text-indent: 10px;
+}
+
+.input-group.title > input.light:focus {outline: 0.2rem solid lightblue;}
+
+.input-group.title > input.dark:focus {outline: 0.2rem solid #0093d4;}
+
+.input-group.title > input.dark {
+  border: 0.125rem solid var(--white);
+  background-color: var(--white);
+}
+
+.input-group.title > input.light {
+  border: 0.125rem solid var(--black);
+  background-color: transparent;
+}
+
+.input-group.completed {
+  justify-content: space-between;
+}
+
+.input-group.completed > .checkbox {
+  height: 2.2rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.70rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group.completed > .checkbox.light {
+  border: 0.125rem solid var(--black);
+  background-color: transparent;
+}
+
+.input-group.completed > .checkbox.dark {
+  border: 0.125rem solid var(--white);
+  background-color: var(--white);
+}
+
+.input-group.completed > .checkbox > .checkmark {
+  display: none;
+  fill: var(--black);
+}
+
+.input-group.completed > .checkbox > .checkmark.active {
+  display: block;
+}
+
+.input-group.description {
+  flex-direction: column;
+}
+
+.input-group.description > label {
+  align-self: flex-start;
+}
+
+.input-group.description > textarea {
+  resize: none;
+  height: 20vh;
+  width: 100%;
+  border-radius: 0.70rem;
+  background-color: var(--white);
+  font-size: 1.25rem;
+  font-family: 'Rubik', Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  text-indent: 10px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.input-group.description > textarea::-webkit-scrollbar {display: none;}
 
 
+.input-group.description > textarea.light {border: 0.125rem solid var(--black);}
+.input-group.description > textarea.dark {border: 0.125rem solid var(--white);}
+.input-group.description > textarea.light:focus {outline: 0.2rem solid lightblue;}
+.input-group.description > textarea.dark:focus {outline: 0.2rem solid #0093d4;}
 
 @media screen and (max-width: 800px) {
 
@@ -217,6 +376,6 @@ nav.dark {
   }
 
   .task-section {
-    width: 100%
+    width: 100%;
   }
 }
