@@ -182,6 +182,7 @@ nav.dark {
   align-items: center;
   gap: 1rem;
   padding: 0 2rem;
+  cursor: pointer;
 }
 
 .task-title {
