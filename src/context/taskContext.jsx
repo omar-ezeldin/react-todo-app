@@ -1,21 +1,17 @@
 import { createContext, useContext, useState } from "react";
 
 const TaskContext = createContext()
-const TaskAdd = createContext()
-const CurrTask = createContext()
 
-export function useTasks() {
+export function useTaskContext() {
     return useContext(TaskContext)
 }
 
-export function useTaskAdd() {
-    return useContext(TaskAdd)
-}
-
-
-
 export function TasksProvider({children}) {
-    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [])
+    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || (() => {
+        localStorage.setItem("tasks", JSON.stringify([]))
+        return []
+    }))
+    const [currTaskID, setCurrTaskID] = useState(tasks.length === 0 ? null : tasks[0].id)  
 
     function addTask() {
         setTasks(prevTasks => {
@@ -29,18 +25,15 @@ export function TasksProvider({children}) {
                 newTodo,
                 ...prevTasks
             ]
+            setCurrTaskID(newTodo.id)
             localStorage.setItem("tasks", JSON.stringify(tasks))
             return tasks
         })
     }
 
     return (
-        <CurrTask.Provider value={null}>
-            <TaskAdd.Provider value={addTask}>
-                <TaskContext.Provider value={tasks}>
-                    {children}
-                </TaskContext.Provider>
-            </TaskAdd.Provider>
-        </CurrTask.Provider>
+        <TaskContext.Provider value={[[tasks, currTaskID], [setCurrTaskID, addTask]]}>
+            {children}
+        </TaskContext.Provider>
     )
 }

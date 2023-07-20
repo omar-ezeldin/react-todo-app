@@ -183,6 +183,26 @@ nav.dark {
   gap: 1rem;
   padding: 0 2rem;
   cursor: pointer;
+  border-top: 0.125rem solid transparent;
+  border-bottom: 0.125rem solid transparent;
+}
+
+.task.active {
+  background-color: var(--white);
+}
+
+.task.active > .task-checkbox {border-color: var(--black);}
+.task.active > .task-checkbox > .checkmark {fill: var(--black);}
+.task.active > .task-title {color: var(--black);}
+
+.task.active.dark {
+  border-top: 0.125rem solid var(--white);
+  border-bottom: 0.125rem solid var(--white);
+}
+
+.task.active.light {
+  border-top: 0.125rem solid var(--black);
+  border-bottom: 0.125rem solid var(--black);
 }
 
 .task-title {
