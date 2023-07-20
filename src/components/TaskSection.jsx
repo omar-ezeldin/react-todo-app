@@ -9,8 +9,8 @@ export function TaskSection() {
     let taskElements = tasks.map(task => {
         return <Task 
             key={task.id}
-            id={task.id}
             title={task.title} 
+            id={task.id}
             isCompleted={task.isCompleted} 
             selectedID={currTaskID}
             select={setCurrTaskID}

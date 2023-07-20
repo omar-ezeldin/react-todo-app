@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const TaskContext = createContext()
 
@@ -13,6 +13,8 @@ export function TasksProvider({children}) {
     }))
     const [currTaskID, setCurrTaskID] = useState(tasks.length === 0 ? null : tasks[0].id)  
 
+    useEffect(() => localStorage.setItem("tasks", JSON.stringify(tasks)), [tasks])
+
     function addTask() {
         setTasks(prevTasks => {
             let newTodo = {
@@ -26,13 +28,39 @@ export function TasksProvider({children}) {
                 ...prevTasks
             ]
             setCurrTaskID(newTodo.id)
-            localStorage.setItem("tasks", JSON.stringify(tasks))
             return tasks
         })
     }
 
+    function editTask(id, property, value) {
+        setTasks(prevTasks => {
+            return prevTasks.map(task => {
+                if (task.id === id) {
+                    return {
+                        ...task,
+                        [property]: value,
+                    }
+                }
+                return task
+            })
+        })
+    }
+
+    function deleteTask(id) {
+        setCurrTaskID(() => {
+            if (tasks.length === 1) {
+                return null
+            }else if(id === tasks[0].id) {
+                return tasks[1].id
+            }else {
+                return tasks[0].id
+            }
+        })
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+    }
+
     return (
-        <TaskContext.Provider value={[[tasks, currTaskID], [setCurrTaskID, addTask]]}>
+        <TaskContext.Provider value={[[tasks, currTaskID], [setCurrTaskID, addTask, editTask, deleteTask]]}>
             {children}
         </TaskContext.Provider>
     )

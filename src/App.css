@@ -183,8 +183,10 @@ nav.dark {
   gap: 1rem;
   padding: 0 2rem;
   cursor: pointer;
+  height: 5rem;
   border-top: 0.125rem solid transparent;
   border-bottom: 0.125rem solid transparent;
+  overflow: hidden;
 }
 
 .task.active {
@@ -208,11 +210,14 @@ nav.dark {
 .task-title {
   font-size: 1.5rem;
   font-weight: 300;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .task-checkbox {
   border-radius: 0.70rem;
-  width: 10%;
+  min-width: 10%;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
@@ -235,8 +240,6 @@ nav.dark {
 /* Editing section */
 
 .editing-section {
-  background-color: var(--white);
-  color: var(--black);
   width: 74vw;
   height: 88vh;
 }
@@ -249,6 +252,8 @@ nav.dark {
   align-items: center;
   justify-content: space-between;
   margin: 1rem 3.5rem 1rem;
+  overflow: hidden;
+  gap: 4rem;
 }
 
 .editing-section-header.light{border-bottom: 0.20rem solid var(--black);}
@@ -257,6 +262,10 @@ nav.dark {
 .editing-section-title {
   text-transform: uppercase;
   font-size: 2.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 700px;
 }
 
 .trash {
@@ -370,6 +379,32 @@ nav.dark {
 .input-group.description > textarea.dark {border: 0.125rem solid var(--white);}
 .input-group.description > textarea.light:focus {outline: 0.2rem solid lightblue;}
 .input-group.description > textarea.dark:focus {outline: 0.2rem solid #0093d4;}
+
+/* No Task Section */
+
+.notask-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74vw;
+  height: 88vh;
+}
+
+.notask-container > h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.notask-container.light {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.notask-container.dark {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 
 @media screen and (max-width: 800px) {
 
