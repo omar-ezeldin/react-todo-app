@@ -6,4 +6,4 @@ ___
 - [x] 🌑 Dark Mode Enabled
 ___
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ea83e33f-947e-46e8-b746-2c3222a5fd7a/deploy-status)](https://app.netlify.com/sites/to-do-app-1122/deploys)
+[![Netlify](https://img.shields.io/badge/Netlify-Visit%20this%20project-grey?labelColor=04a29f&style=flat-square&logo=netlify&logoColor=black&link=https://to-do-app-1122.netlify.app/)](https://to-do-app-1122.netlify.app/)
