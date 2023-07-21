@@ -393,6 +393,7 @@ nav.dark {
 .notask-container > h2 {
   font-size: 2.5rem;
   font-weight: 300;
+  text-align: center;
 }
 
 .notask-container.light {
@@ -405,8 +406,19 @@ nav.dark {
   color: var(--white);
 }
 
+.back-arrow {
+  height: 300px;
+  display: none;
+}
+
+.back-arrow.dark {fill: var(--white);}
+.back-arrow.light {fill: var(--dark);}
+
+
+
 
 @media screen and (max-width: 800px) {
+  body {overflow: hidden;}
 
   nav {
     height: 11vh;
@@ -430,8 +442,69 @@ nav.dark {
     aspect-ratio: 1/1;
     align-items: center;
   }
-
+  
   .task-section {
-    width: 100%;
+    width: 100vw;
+    height: 89vh;
+    position: absolute;
+    /* overflow-y: scroll; */
+  }
+  
+  .editing-section {
+    width: 100vw;
+    height: 89vh;
+    position: absolute;
+    transform: translate(100%, 0);
+    margin: 0;
+  }
+
+  .notask-container {
+    width: 100vw;
+    position: absolute;
+    transform: translate(100%, 0);
+  }
+
+  .notask-container > h2 {
+    font-size: 1.75rem;
+    margin: 1rem;
+  }
+
+  .editing-section.active {transform: translate(0)}
+  .task-section.active {transform: translate(0)}
+  .notask-container.active {transform: translate(0)}
+  .editing-section.inactive {transform: translate(100%, 0)}
+  .task-section.inactive {transform: translate(-100%, 0)}
+  .notask-container.inactive {transform: translate(0)}
+
+  .back-arrow {
+    display: block;
+    height: 100px;
+  }
+
+  .trash {
+    display: block;
+    height: 100px;
+  }
+  
+  .editing-section-header {
+    margin: 0.5rem 1rem;
+    height: 15vh;
+  }
+
+  .editing-section-title {
+    margin: 0;
+    padding: 0;
+    width: 700px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .editing-section-body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .input-group {
+    margin: 1rem 1.5rem;
   }
 }

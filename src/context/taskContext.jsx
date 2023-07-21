@@ -13,10 +13,13 @@ export function TasksProvider({children}) {
         localStorage.setItem("tasks", JSON.stringify([]))
         return []
     }))
+
     const [currTaskID, setCurrTaskID] = useState(tasks.length === 0 ? null : tasks[0].id)  
 
-    useEffect(() => localStorage.setItem("tasks", JSON.stringify(tasks)), [tasks])
+    const [activeElements, setActiveElements] = useState({taskSection: true, editingSection: false})
 
+    useEffect(() => localStorage.setItem("tasks", JSON.stringify(tasks)), [tasks])
+    
     function addTask() {
         setTasks(prevTasks => {
             let newTodo = {
@@ -34,8 +37,8 @@ export function TasksProvider({children}) {
         })
     }
 
-    function editTask(id, property, value) {
-        if(property == "isCompleted" && value) {
+    function editTask(id, property, value, play = false) {
+        if(property == "isCompleted" && value && play) {
             new Audio(sound).play()
         }
 
@@ -63,10 +66,13 @@ export function TasksProvider({children}) {
             }
         })
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+        setActiveElements({taskSection: true, editingSection: false})
     }
 
+
+
     return (
-        <TaskContext.Provider value={[[tasks, currTaskID], [setCurrTaskID, addTask, editTask, deleteTask]]}>
+        <TaskContext.Provider value={[[tasks, currTaskID], [setCurrTaskID, addTask, editTask, deleteTask], [activeElements, setActiveElements]]}>
             {children}
         </TaskContext.Provider>
     )
