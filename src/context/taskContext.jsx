@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import sound from '/completion.m4a?url';
+
 
 const TaskContext = createContext()
 
@@ -33,6 +35,10 @@ export function TasksProvider({children}) {
     }
 
     function editTask(id, property, value) {
+        if(property == "isCompleted" && value) {
+            new Audio(sound).play()
+        }
+
         setTasks(prevTasks => {
             return prevTasks.map(task => {
                 if (task.id === id) {

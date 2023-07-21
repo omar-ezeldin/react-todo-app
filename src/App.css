@@ -183,10 +183,10 @@ nav.dark {
   gap: 1rem;
   padding: 0 2rem;
   cursor: pointer;
-  height: 5rem;
   border-top: 0.125rem solid transparent;
   border-bottom: 0.125rem solid transparent;
-  overflow: hidden;
+  /* overflow: hidden; */
+
 }
 
 .task.active {
