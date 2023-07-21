@@ -418,7 +418,7 @@ nav.dark {
 
 
 @media screen and (max-width: 800px) {
-  body {overflow: hidden;}
+  body, html {overflow: hidden;}
 
   nav {
     height: 11vh;
@@ -447,7 +447,7 @@ nav.dark {
     width: 100vw;
     height: 89vh;
     position: absolute;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
   }
   
   .editing-section {
@@ -472,9 +472,9 @@ nav.dark {
   .editing-section.active {transform: translate(0)}
   .task-section.active {transform: translate(0)}
   .notask-container.active {transform: translate(0)}
-  .editing-section.inactive {transform: translate(100%, 0)}
-  .task-section.inactive {transform: translate(-100%, 0)}
-  .notask-container.inactive {transform: translate(0)}
+  .editing-section.inactive {display: none; transform: translate(100%, 0)}
+  .task-section.inactive {display: none; transform: translate(-100%, 0)}
+  .notask-container.inactive {display: none; transform: translate(0)}
 
   .back-arrow {
     display: block;
